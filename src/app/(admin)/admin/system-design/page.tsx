@@ -710,7 +710,7 @@ export default function SuperConfigPage() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="rounded-xl">
-                    {TEMPLATE_OPTIONS.map(o => (
+                    {(template.options || TEMPLATE_OPTIONS).map(o => (
                       <SelectItem key={o} value={o} className="rounded-lg">
                         {o === 'aarong' ? 'Aarong Premium Layout' : `Version ${o.toUpperCase()}`}
                       </SelectItem>
