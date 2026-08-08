@@ -7,12 +7,8 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import {
   Layout,
-  Palette,
-  Monitor,
   Save,
   ShieldCheck,
-  ChevronRight,
-  Eye,
   Globe,
   CreditCard,
   BarChart3,
