@@ -139,7 +139,7 @@ export default function HeroV1({ banners, layout }: HeroSliderProps) {
 
                 {/* Content */}
                 <div className={`absolute inset-0 flex items-end pb-10 sm:pb-20 ${layout === 'v3' ? 'lg:pb-12' : 'lg:pb-32'} z-20 px-4 sm:px-12 md:px-20 ${layout === 'v3' ? 'lg:px-16' : 'lg:px-32'}`}>
-                  <div className="w-full max-w-[95%] sm:max-w-[60%] lg:max-w-[50%] flex flex-col items-start text-left">
+                  <div className="w-full max-w-[95%] sm:max-w-[70%] lg:max-w-[75%] flex flex-col items-start text-left">
                     <AnimatePresence mode="wait">
                       {isActive && (
                         <motion.div
@@ -152,7 +152,7 @@ export default function HeroV1({ banners, layout }: HeroSliderProps) {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-                            className={`text-base sm:text-4xl md:text-5xl ${layout === 'v3' ? 'lg:text-4xl' : 'lg:text-7xl'} font-black text-white leading-[1.1] tracking-tight drop-shadow-2xl ${banner.subtitle ? (layout === 'v3' ? 'mb-1 sm:mb-6 lg:mb-2' : 'mb-1 sm:mb-6') : (layout === 'v3' ? 'mb-5 sm:mb-8 lg:mb-3' : 'mb-5 sm:mb-8')}`}
+                            className={`text-base sm:text-4xl md:text-5xl ${layout === 'v3' ? 'lg:text-4xl' : 'lg:text-5xl xl:text-6xl'} font-black text-white leading-[1.1] tracking-tight drop-shadow-2xl ${banner.subtitle ? (layout === 'v3' ? 'mb-1 sm:mb-6 lg:mb-2' : 'mb-1 sm:mb-6') : (layout === 'v3' ? 'mb-5 sm:mb-8 lg:mb-3' : 'mb-5 sm:mb-8')}`}
                           >
                             {banner.title}
                           </motion.h1>
