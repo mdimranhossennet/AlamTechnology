@@ -51,7 +51,7 @@ export async function printStickerInvoice(orderOrOrders: any | any[], settings: 
   const orders = Array.isArray(orderOrOrders) ? orderOrOrders : [orderOrOrders];
   if (orders.length === 0) return;
 
-  const storeName: string = settings?.siteName || settings?.brandName || 'Alam Technology';
+  const storeName: string = settings?.siteName || settings?.brandName || 'HEB Vision International';
 
   // Dynamic theme variables
   let primary = '#00D1B2';

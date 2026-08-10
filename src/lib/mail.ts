@@ -14,12 +14,12 @@ export const sendResetEmail = async (email: string, token: string) => {
   const resetUrl = `${baseUrl}/reset-password?token=${encodedToken}`;
 
   const mailOptions = {
-    from: `"Alam Technology" <${process.env.EMAIL_USER}>`,
+    from: `"HEB Vision International" <${process.env.EMAIL_USER}>`,
     to: email,
-    subject: 'Password Reset Request - Alam Technology',
+    subject: 'Password Reset Request - HEB Vision International',
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-        <h2 style="color: #0d9488; text-align: center;">Alam Technology</h2>
+        <h2 style="color: #0d9488; text-align: center;">HEB Vision International</h2>
         <p>Hello,</p>
         <p>We received a request to reset your password. Click the button below to set a new password. This link will expire in 1 hour.</p>
         <div style="text-align: center; margin: 30px 0;">
@@ -27,7 +27,7 @@ export const sendResetEmail = async (email: string, token: string) => {
         </div>
         <p>If you didn't request this, you can safely ignore this email.</p>
         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-        <p style="font-size: 12px; color: #888;">Alam Technology - Your Trusted Online Store</p>
+        <p style="font-size: 12px; color: #888;">HEB Vision International - Your Trusted Online Store</p>
       </div>
     `,
   };

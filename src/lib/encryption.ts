@@ -17,7 +17,7 @@ function getEffectiveKey(): string {
     if (process.env.NODE_ENV === 'production') {
       throw new Error('ENCRYPTION_KEY is required in production environments to secure sensitive data.');
     }
-    return 'Alam Technologyshop-dev-only-insecure-key-32';
+    return 'HEB Vision Internationalshop-dev-only-insecure-key-32';
   }
   return MASTER_KEY;
 }

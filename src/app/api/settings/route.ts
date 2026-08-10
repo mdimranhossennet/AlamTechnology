@@ -33,9 +33,9 @@ export async function GET() {
     const settings = await GlobalSettings.findOne().sort({ updatedAt: -1 });
     if (!settings) {
       return NextResponse.json({
-        brandName: process.env.NEXT_PUBLIC_STORE_NAME || "Alam Technology",
+        brandName: process.env.NEXT_PUBLIC_STORE_NAME || "HEB Vision International",
         contact: {
-          email: "support@AlamTechnology.com",
+          email: "support@HEBVisionInternational.com",
           phone: "+8801234567890",
           address: "Dhaka, Bangladesh"
         },
@@ -48,8 +48,8 @@ export async function GET() {
           tiktok: '',
           whatsapp: ''
         },
-        marqueeText: "Welcome to Alam Technology!",
-        metaTitle: process.env.NEXT_PUBLIC_STORE_NAME || "Alam Technology",
+        marqueeText: "Welcome to HEB Vision International!",
+        metaTitle: process.env.NEXT_PUBLIC_STORE_NAME || "HEB Vision International",
         metaDescription: "The most popular online shop in Bangladesh.",
         logoUrl: "/logo.webp",
         freeDeliveryThreshold: 0,

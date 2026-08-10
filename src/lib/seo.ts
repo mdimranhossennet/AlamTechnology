@@ -12,7 +12,7 @@ export async function generateOrganizationSchema(settings: any) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: settings.brandName || 'Alam Technology',
+    name: settings.brandName || 'HEB Vision International',
     url: baseUrl,
     logo: settings.logo,
     contactPoint: {
@@ -41,7 +41,7 @@ export async function generateProductSchema(product: any) {
     sku: product.sku,
     brand: {
       '@type': 'Brand',
-      name: 'Alam Technology',
+      name: 'HEB Vision International',
     },
     offers: {
       '@type': 'Offer',
@@ -78,7 +78,7 @@ export async function generateBlogSchema(blog: any) {
     dateModified: blog.updatedAt || blog.createdAt,
     author: {
       '@type': 'Organization',
-      name: 'Alam Technology',
+      name: 'HEB Vision International',
     },
     description: blog.metaDescription || blog.title,
     url: `${baseUrl}/blog/${blog.slug}`,

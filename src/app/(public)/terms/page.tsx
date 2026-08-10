@@ -5,8 +5,8 @@ import { Separator } from '@/components/ui/separator';
 import { FileText, ShoppingBag, Truck, UserCheck, Scale, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Alam Technology',
-  description: 'Understand the terms and conditions for shopping at Alam Technology.',
+  title: 'Terms & Conditions | HEB Vision International',
+  description: 'Understand the terms and conditions for shopping at HEB Vision International.',
 };
 
 async function getSettings() {
@@ -15,9 +15,9 @@ async function getSettings() {
     const settings = await GlobalSettings.findOne().lean();
     if (!settings) {
       return {
-        brandName: "Alam Technology",
+        brandName: "HEB Vision International",
         contact: {
-          email: "support@AlamTechnology.com",
+          email: "support@HEBVisionInternational.com",
           phone: "+8801234567890"
         }
       };
@@ -26,9 +26,9 @@ async function getSettings() {
   } catch (error) {
     console.error('Error fetching settings for terms page:', error);
     return {
-      brandName: "Alam Technology",
+      brandName: "HEB Vision International",
       contact: {
-        email: "support@AlamTechnology.com",
+        email: "support@HEBVisionInternational.com",
         phone: "+8801234567890"
       }
     };
@@ -38,7 +38,7 @@ async function getSettings() {
 export default async function TermsPage() {
   const settings = await getSettings();
   const brandName = settings.brandName || "RPL Market";
-  const contactEmail = settings.contact?.email || "support@AlamTechnology.com";
+  const contactEmail = settings.contact?.email || "support@HEBVisionInternational.com";
   const lastUpdated = "April 04, 2026";
 
   return (

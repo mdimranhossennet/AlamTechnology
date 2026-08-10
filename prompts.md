@@ -1,59 +1,23 @@
-# Alam Technology - Category Image Generation Prompts
+# HEB Vision International - Banner Prompts
 
-You can use these prompts in Midjourney, DALL-E 3, or any other AI image generator to create high-quality, professional square category images for Alam Technology.
+Here are the prompts used to generate the text-free banners for the Coaching Center Management system. These banners match the theme of your provided images (Humanity, Education, Business, Islamic Education, Playground, Waiting Room) but do not contain any text.
 
-**Recommended Aspect Ratio:** Square, 1:1 ratio (default or `--ar 1:1`).
+## 1. Main Hero Banner (Education & Campus)
+**Prompt:** A wide cinematic landscape banner image showing a modern school campus, students in uniform walking happily, a bright sunny day, high-tech computer lab in the background. Professional photography, photorealistic, 8k resolution, vibrant colors. Wide aspect ratio. --ar 16:9. No text, no words, no letters.
+**File:** `banner_hero_school.webp`
 
----
+## 2. Islamic Education Banner
+**Prompt:** A wide cinematic banner image showing young boys wearing white kufis sitting in a beautiful mosque with intricate Islamic architecture, peacefully reading the Quran. Warm golden sunlight streaming through the windows, peaceful and serene atmosphere. Professional photography, highly detailed. Wide aspect ratio. --ar 16:9. No text, no words, no letters.
+**File:** `banner_islamic_edu.webp`
 
-### Category 1: LED TVs
-- **Prompt:**
-  > High-end, premium smart LED television displayed on a clean studio background. The screen is vibrant showing colorful dynamic abstract visuals. Modern product shot, studio lighting, hyper-realistic, sleek design. --ar 1:1 --v 6.0
-- **Proposed Category Name:** LED TV
-- **Filename to Save As:** `led-tv.webp` (place inside `public/assets/images/cagetory/`)
+## 3. Playground / Facilities Banner
+**Prompt:** A wide cinematic banner image of a vibrant, green children's playground. Kids playing happily on swings, slides, and small toy cars. Lush green grass, bright sunny day, joyful atmosphere. High quality, photorealistic, vibrant colors. Wide aspect ratio. --ar 16:9. No text, no words, no letters.
+**File:** `banner_playground.webp`
 
----
+## 4. Modern Waiting Room Banner
+**Prompt:** A wide cinematic banner image of a modern, luxurious, air-conditioned waiting room. Comfortable leather sofas, a flat-screen TV on the wall, indoor plants, elegant warm lighting, soft atmosphere. Professional interior photography, photorealistic. Wide aspect ratio. --ar 16:9. No text, no words, no letters.
+**File:** `banner_waiting_room.webp`
 
-### Category 2: Fans & Cooling
-- **Prompt:**
-  > A modern, elegant white multi-blade smart ceiling fan displayed against a minimal modern ceiling or studio background. Clean lines, sleek contemporary design, realistic studio photography. --ar 1:1 --v 6.0
-- **Proposed Category Name:** Fans
-- **Filename to Save As:** `fans.webp`
-
----
-
-### Category 3: Smartphones & Accessories
-- **Prompt:**
-  > A premium modern smartphone standing vertically next to smart wireless earbuds on a clean glossy surface with beautiful reflection. High-tech product showcase, neon accent lighting in the background, sharp focus, professional tech product photography. --ar 1:1 --v 6.0
-- **Proposed Category Name:** Smartphones & Gadgets
-- **Filename to Save As:** `smartphones.webp`
-
----
-
-### Category 4: Electrical Fittings & Wiring
-- **Prompt:**
-  > A neat arrangement of professional electrical components: a modern premium wall switch panel, a roll of red electrical wire cable, and a safety circuit breaker (MCB) on a gray polished concrete table. Studio lighting, sharp details, industry-standard equipment. --ar 1:1 --v 6.0
-- **Proposed Category Name:** Electrical & Wiring
-- **Filename to Save As:** `electrical-wiring.webp`
-
----
-
-### Category 5: LED Lighting & Bulbs
-- **Prompt:**
-  > A group of modern energy-saving LED light bulbs and smart lighting tubes shining with warm and cool glows, arranged beautifully on a dark aesthetic background. High detail, commercial lighting catalog style, bright and clean. --ar 1:1 --v 6.0
-- **Proposed Category Name:** LED Lights
-- **Filename to Save As:** `lighting.webp`
-
----
-
-## Instructions for Seeding:
-1. Generate the 5 images using these prompts.
-2. Save the images inside your project directory at:
-   `D:\project\AlamTechnology\public\assets\images\cagetory\`
-3. Rename the files exactly to:
-   - `led-tv.webp`
-   - `fans.webp`
-   - `smartphones.webp`
-   - `electrical-wiring.webp`
-   - `lighting.webp`
-4. Let me know when they are ready, and I will update `scripts/seed-categories.js` to seed these categories for you!
+## 5. Humanity & Business Concept Banner
+**Prompt:** A wide cinematic banner image showing a conceptual blend: hands gently holding a glowing heart symbolizing humanity and care, alongside professional modern business elements like a sleek glass office. High-end composite photography, dramatic lighting. Wide aspect ratio. --ar 16:9. No text, no words, no letters.
+**File:** `banner_humanity_biz.webp`

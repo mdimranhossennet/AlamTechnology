@@ -51,7 +51,7 @@ export function numberToWords(num: number): string {
 }
 
 export async function generateBillPDF(bill: any, settings: any, mode: 'download' | 'print' = 'download') {
-  const brandName = settings?.brandName || "Alam Technology";
+  const brandName = settings?.brandName || "HEB Vision International";
   const brandEmail = settings?.contact?.email || "";
   const brandPhone = settings?.contact?.phone || "";
   const brandAddress = settings?.contact?.address || "";

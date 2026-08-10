@@ -4,7 +4,7 @@ export async function generateInvoicePDF(orderOrOrders: any | any[], settings: a
   const orders = Array.isArray(orderOrOrders) ? orderOrOrders : [orderOrOrders];
   if (orders.length === 0) return;
 
-  const brandName = settings?.brandName || "Alam Technology";
+  const brandName = settings?.brandName || "HEB Vision International";
   const brandEmail = settings?.contact?.email || "";
   const brandPhone = settings?.contact?.phone || "";
   const brandAddress = settings?.contact?.address || "";

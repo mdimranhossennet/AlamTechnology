@@ -194,8 +194,8 @@ export default function NavbarV2() {
             />
 
             <Link href="/" className={`text-2xl md:text-3xl font-black tracking-tighter hover:scale-105 transition-all flex items-center gap-2 group ${!isHomePage || isScrolled ? 'text-foreground' : 'text-white'}`}>
-              <Image src="/logo.webp" width={40} height={40} alt="Alam Technology Logo" className="object-contain" />
-              {settings?.brandName || 'Alam Technology'}
+              <Image src="/logo.webp" width={40} height={40} alt="HEB Vision International Logo" className="object-contain" />
+              {settings?.brandName || 'HEB Vision International'}
             </Link>
           </div>
 

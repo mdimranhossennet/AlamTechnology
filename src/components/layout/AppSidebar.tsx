@@ -56,6 +56,45 @@ const data = {
       ],
     },
     {
+      title: "Education & Coaching",
+      url: "#",
+      icon: Users,
+      items: [
+        {
+          title: "Students",
+          url: "/admin/education/students",
+        },
+        {
+          title: "Admissions",
+          url: "/admin/education/admissions",
+        },
+        {
+          title: "Courses & Classes",
+          url: "/admin/education/classes",
+        },
+        {
+          title: "Attendance",
+          url: "/admin/education/attendance",
+        },
+        {
+          title: "Fees & Payments",
+          url: "/admin/education/fees",
+        },
+        {
+          title: "Exams & Results",
+          url: "/admin/education/exams",
+        },
+        {
+          title: "Notices",
+          url: "/admin/education/notices",
+        },
+        {
+          title: "Reports",
+          url: "/admin/education/reports",
+        },
+      ],
+    },
+    {
       title: "Product Management",
       url: "#",
       icon: ShoppingBag,

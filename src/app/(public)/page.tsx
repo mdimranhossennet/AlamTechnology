@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
     getCachedBanners()
   ]);
 
-  const brandName = settings?.brandName || 'Alam Technology';
+  const brandName = settings?.brandName || 'HEB Vision International';
   const metaTitle = settings?.metaTitle || brandName;
   const description = settings?.metaDescription || settings?.siteDescription || 'Your ultimate destination for quality products.';
   const ogImage = banners?.[0]?.image || settings?.logoUrl || '';
@@ -112,6 +112,12 @@ const ComboOfferBanner = dynamic(() => import('@/components/storefront/ComboOffe
 const NewsletterV2 = dynamic(() => import('@/components/storefront/NewsletterV2').then(mod => mod.NewsletterV2), {
   loading: () => <BannerSkeleton />
 });
+
+import { EducationHero } from '@/components/storefront/education/EducationHero';
+import { CoreFeatures } from '@/components/storefront/education/CoreFeatures';
+import { IslamicEducation } from '@/components/storefront/education/IslamicEducation';
+import { FacilitiesSection } from '@/components/storefront/education/FacilitiesSection';
+import { NoticeBoard } from '@/components/storefront/education/NoticeBoard';
 
 async function getHomeData() {
   try {
@@ -230,6 +236,13 @@ export default async function Home() {
             {/* 1. Hero Section */}
             <HeroSlider banners={data.banners} style={ui.hero} layout={ui.layout} />
 
+            {/* Education Module Integration */}
+            <EducationHero />
+            <NoticeBoard />
+            <CoreFeatures />
+            <IslamicEducation />
+            <FacilitiesSection />
+
             {/* 4. Categories Showcase */}
             <CategoryShowcase categories={data.categories} style={ui.categories} />
 
@@ -313,6 +326,13 @@ export default async function Home() {
         <>
           {/* 1. Hero Section */}
           <HeroSlider banners={data.banners} style={ui.hero} layout={ui.layout} />
+
+          {/* Education Module Integration */}
+          <EducationHero />
+          <NoticeBoard />
+          <CoreFeatures />
+          <IslamicEducation />
+          <FacilitiesSection />
 
           {/* 4. Categories Showcase */}
           <CategoryShowcase categories={data.categories} style={ui.categories} />

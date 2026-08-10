@@ -102,21 +102,21 @@ export async function generateMetadata(): Promise<Metadata> {
       appleWebApp: {
         capable: true,
         statusBarStyle: 'default',
-        title: settings.brandName || "Alam Technology",
+        title: settings.brandName || "HEB Vision International",
       },
       formatDetection: {
         telephone: false,
       },
       openGraph: {
-        title: settings.metaTitle || settings.brandName || "Alam Technology",
+        title: settings.metaTitle || settings.brandName || "HEB Vision International",
         description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
         url: baseUrl,
-        siteName: settings.brandName || "Alam Technology",
+        siteName: settings.brandName || "HEB Vision International",
         type: 'website',
       },
       twitter: {
         card: 'summary_large_image',
-        title: settings.metaTitle || settings.brandName || "Alam Technology",
+        title: settings.metaTitle || settings.brandName || "HEB Vision International",
         description: settings.metaDescription || settings.brandName || "Your ultimate destination for quality products.",
       },
       verification: {
@@ -133,7 +133,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   } catch (error) {
     return {
-      title: "Alam Technology",
+      title: "HEB Vision International",
       description: "Your ultimate destination for quality products.",
     };
   }

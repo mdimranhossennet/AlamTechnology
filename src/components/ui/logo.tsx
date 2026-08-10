@@ -19,7 +19,7 @@ interface LogoProps {
 export function Logo({ className, imageClassName, textClassName, showText = true, onClick, sizes, src }: LogoProps) {
   const { brandName, logoUrl } = useSettings();
 
-  const finalBrandName = brandName || "Alam Technology";
+  const finalBrandName = brandName || "HEB Vision International";
   const finalLogoUrl = src || logoUrl || "/logo.webp";
 
   return (
