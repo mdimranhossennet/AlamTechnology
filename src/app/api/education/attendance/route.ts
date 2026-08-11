@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
-import connectToDatabase from '@/lib/mongodb';
+import connectToDatabase from '@/lib/db';
 import Attendance from '@/models/Attendance';
 import Student from '@/models/Student';
 import mongoose from 'mongoose';
@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
     }
 
     // If no attendance record exists, return the list of active students in the batch
-    const students = await Student.find({ batch: batchId, status: 'Active' })
+    const students = await Student.find({ batch: batchId, status: 'active' })
       .select('_id firstName lastName studentId')
       .sort({ studentId: 1 });
 
