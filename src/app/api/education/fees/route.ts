@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
-import connectToDatabase from '@/lib/mongodb';
+import connectToDatabase from '@/lib/db';
 import Fee from '@/models/Fee';
 import Student from '@/models/Student';
 import mongoose from 'mongoose';
