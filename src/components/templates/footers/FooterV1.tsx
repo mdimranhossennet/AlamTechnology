@@ -1,4 +1,4 @@
-﻿/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -47,20 +47,21 @@ export default function FooterV1() {
   const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
-    // Check if running in standalone mode (already installed)
-    const checkStandalone = () => {
+    // Check environment details (standalone mode and iOS detection)
+    const checkEnvironment = () => {
+      // Check if running in standalone mode (already installed)
       const isStandaloneMode =
         window.matchMedia('(display-mode: standalone)').matches ||
         (window.navigator as any).standalone ||
         document.referrer.includes('android-app://');
       setIsStandalone(isStandaloneMode);
+
+      // Detect iOS device
+      const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+      setIsIOS(isIOSDevice);
     };
 
-    checkStandalone();
-
-    // Detect iOS device
-    const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-    setIsIOS(isIOSDevice);
+    checkEnvironment();
 
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
@@ -123,8 +124,7 @@ export default function FooterV1() {
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-4 lg:col-span-2">
             <Logo textClassName="text-xl md:text-2xl whitespace-nowrap" />
             <p className="text-sm text-muted-foreground w-full md:w-4/5">
-              If you can dream it, you can do it.
-              So, our dream is best clothing for our customers
+              Empowering the next generation with modern education, moral values, and academic excellence. Join us in shaping a brighter future.
             </p>
 
             {/* PWA Download App Button */}

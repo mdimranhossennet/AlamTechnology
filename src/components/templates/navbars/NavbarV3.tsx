@@ -94,10 +94,12 @@ export default function NavbarV3() {
 
 
   const NAV_LINKS = [
+    { label: 'Home', href: '/' },
+    { label: 'Education', href: '/education' },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Notices', href: '/notices' },
     { label: 'Shop', href: '/shop' },
-    { label: 'Curated', href: '/categories' },
-    { label: 'Journal', href: '/blog' }
-  ];
+];
 
   return (
     <>

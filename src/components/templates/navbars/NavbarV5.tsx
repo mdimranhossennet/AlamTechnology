@@ -148,10 +148,12 @@ export default function NavbarV5() {
 
 
   const NAV_LINKS = [
-    { label: 'Discovery', href: '/shop' },
-    { label: 'Atelier', href: '/categories' },
-    { label: 'Journal', href: '/blog' }
-  ];
+    { label: 'Home', href: '/' },
+    { label: 'Education', href: '/education' },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Notices', href: '/notices' },
+    { label: 'Shop', href: '/shop' },
+];
 
   return (
     <>

@@ -82,34 +82,7 @@ export function CoreFeatures() {
           ))}
         </div>
 
-        {/* Live Broadcasting Banner */}
-        <div className="bg-gradient-to-r from-slate-900 to-blue-950 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden">
-          <div className="absolute right-0 top-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -mr-32 -mt-32"></div>
-          
-          <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left text-white">
-            <h3 className="text-2xl md:text-3xl font-black mb-2 flex items-center gap-3">
-              <span className="relative flex h-4 w-4">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
-              </span>
-              লাইভ ক্লাস সম্প্রচার
-            </h3>
-            <p className="text-blue-100 font-medium">
-              অভিভাবকরা সরাসরি দেখতে পারবেন আপনার সন্তানের ক্লাস ও কার্যক্রম।
-            </p>
-          </div>
 
-          <div className="relative z-10 flex flex-wrap items-center justify-center gap-4">
-            <a href="#" className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors">
-              <Video className="w-5 h-5" />
-              Facebook Live
-            </a>
-            <a href="#" className="flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold transition-colors">
-              <PlayCircle className="w-5 h-5" />
-              YouTube Live
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -113,11 +113,10 @@ const NewsletterV2 = dynamic(() => import('@/components/storefront/NewsletterV2'
   loading: () => <BannerSkeleton />
 });
 
-import { EducationHero } from '@/components/storefront/education/EducationHero';
 import { CoreFeatures } from '@/components/storefront/education/CoreFeatures';
 import { IslamicEducation } from '@/components/storefront/education/IslamicEducation';
 import { FacilitiesSection } from '@/components/storefront/education/FacilitiesSection';
-import { NoticeBoard } from '@/components/storefront/education/NoticeBoard';
+
 
 async function getHomeData() {
   try {
@@ -237,77 +236,28 @@ export default async function Home() {
             <HeroSlider banners={data.banners} style={ui.hero} layout={ui.layout} />
 
             {/* Education Module Integration */}
-            <EducationHero />
-            <NoticeBoard />
+
             <CoreFeatures />
             <IslamicEducation />
             <FacilitiesSection />
 
-            {/* 4. Categories Showcase */}
-            <CategoryShowcase categories={data.categories} style={ui.categories} />
 
 
 
-            {/* 8. Featured Products */}
-            {data.featuredProducts.length > 0 && (
-              <ProductCarouselSection
-                title="Featured Collections"
-                description="Explore our best-selling and most popular products hand-picked just for you."
-                products={data.featuredProducts}
-                viewAllLink="/shop?filter=featured"
-                bgColor="bg-background"
-                cardStyle={ui.productCard}
-                layout={ui.layout}
-              />
-            )}
 
-            {/* 8. Loyalty Promotion */}
-            <LoyaltyBanner settings={data.settings} layout={ui.layout} />
 
-            {/* 3. Flash Sale (Timed) */}
-            {data.flashSale.length > 0 && (
-              <ProductCarouselSection
-                title="Flash Sale"
-                products={data.flashSale}
-                viewAllLink="/shop?filter=sale"
-                isFlashSale={true}
-                bgColor="bg-primary/5"
-                cardStyle={ui.productCard}
-                layout={ui.layout}
-              />
-            )}
+
+
 
             {/* 7. Combo Discount Promotion */}
             <ComboOfferBanner activeCoupon={data.activeCoupon} settings={data.settings} layout={ui.layout} />
 
-            {/* 6. Trending Products */}
-            {data.trending.length > 0 && (
-              <ProductCarouselSection
-                title="Trending Now"
-                description="The most popular items according to our community ratings and reviews."
-                products={data.trending}
-                viewAllLink="/shop?filter=trending"
-                bgColor="bg-muted/20"
-                cardStyle={ui.productCard}
-                layout={ui.layout}
-              />
-            )}
+
 
             {/* 9. Recent Blogs section */}
             <BlogRecent blogs={data.blogs} />
 
-            {/* 5. New Arrivals */}
-            {data.newArrivals.length > 0 && (
-              <ProductCarouselSection
-                title="New Arrivals"
-                description="Discover the latest additions to our collection. Stay ahead of the curve."
-                products={data.newArrivals}
-                viewAllLink="/shop?filter=new"
-                bgColor="bg-background"
-                cardStyle={ui.productCard}
-                layout={ui.layout}
-              />
-            )}
+
 
             {/* 2. Our Features (Trust Badges) */}
             <FeaturesSection />
@@ -315,8 +265,7 @@ export default async function Home() {
             {/* 8. Testimonials Section */}
             <Testimonials />
 
-            {/* 11. Newsletter V2 Integration */}
-            <NewsletterV2 layout={ui.layout} />
+
 
             {/* 10. FAQ Accordion Section */}
             <FAQSection faqs={data.faqs} />
@@ -328,76 +277,27 @@ export default async function Home() {
           <HeroSlider banners={data.banners} style={ui.hero} layout={ui.layout} />
 
           {/* Education Module Integration */}
-          <EducationHero />
-          <NoticeBoard />
+
           <CoreFeatures />
           <IslamicEducation />
           <FacilitiesSection />
 
-          {/* 4. Categories Showcase */}
-          <CategoryShowcase categories={data.categories} style={ui.categories} />
 
 
-          {/* 8. Featured Products */}
-          {data.featuredProducts.length > 0 && (
-            <ProductCarouselSection
-              title="Featured Collections"
-              description="Explore our best-selling and most popular products hand-picked just for you."
-              products={data.featuredProducts}
-              viewAllLink="/shop?filter=featured"
-              bgColor="bg-background"
-              cardStyle={ui.productCard}
-              layout={ui.layout}
-            />
-          )}
 
-          {/* 8. Loyalty Promotion */}
-          <LoyaltyBanner settings={data.settings} layout={ui.layout} />
 
-          {/* 3. Flash Sale (Timed) */}
-          {data.flashSale.length > 0 && (
-            <ProductCarouselSection
-              title="Flash Sale"
-              products={data.flashSale}
-              viewAllLink="/shop?filter=sale"
-              isFlashSale={true}
-              bgColor="bg-primary/5"
-              cardStyle={ui.productCard}
-              layout={ui.layout}
-            />
-          )}
+
+
 
           {/* 7. Combo Discount Promotion */}
           <ComboOfferBanner activeCoupon={data.activeCoupon} settings={data.settings} layout={ui.layout} />
 
-          {/* 6. Trending Products */}
-          {data.trending.length > 0 && (
-            <ProductCarouselSection
-              title="Trending Now"
-              description="The most popular items according to our community ratings and reviews."
-              products={data.trending}
-              viewAllLink="/shop?filter=trending"
-              bgColor="bg-muted/20"
-              cardStyle={ui.productCard}
-              layout={ui.layout}
-            />
-          )}
+
 
           {/* 9. Recent Blogs section */}
           <BlogRecent blogs={data.blogs} />
 
-          {/* 5. New Arrivals */}
-          {data.newArrivals.length > 0 && (
-            <ProductCarouselSection
-              title="New Arrivals"
-              description="Discover the latest additions to our collection. Stay ahead of the curve."
-              products={data.newArrivals}
-              viewAllLink="/shop?filter=new"
-              bgColor="bg-background"
-              cardStyle={ui.productCard}
-              layout={ui.layout}
-            />
-          )}
+
 
           {/* 2. Our Features (Trust Badges) */}
           <FeaturesSection />
@@ -405,8 +305,7 @@ export default async function Home() {
           {/* 8. Testimonials Section */}
           <Testimonials />
 
-          {/* 11. Newsletter V2 Integration */}
-          <NewsletterV2 layout={ui.layout} />
+
 
           {/* 10. FAQ Accordion Section */}
           <FAQSection faqs={data.faqs} />

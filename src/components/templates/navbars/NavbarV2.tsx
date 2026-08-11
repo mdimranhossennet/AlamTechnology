@@ -51,9 +51,10 @@ import { MobileMenu } from '@/components/layout/MobileMenu';
 
 const navItems = [
   { href: '/', label: 'Home' },
+  { href: '/education', label: 'Education' },
+  { href: '/courses', label: 'Courses' },
+  { href: '/notices', label: 'Notices' },
   { href: '/shop', label: 'Shop' },
-  { href: '/blog', label: 'Blogs' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export default function NavbarV2() {
@@ -290,7 +291,7 @@ export default function NavbarV2() {
                   </li>
                   {index === 0 && (
                     <li>
-                      <CategoryNav isScrolled={!isHomePage || isScrolled} />
+                      {/* CategoryNav Removed */}
                     </li>
                   )}
                 </React.Fragment>

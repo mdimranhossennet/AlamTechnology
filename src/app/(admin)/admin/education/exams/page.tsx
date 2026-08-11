@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Loader2, Plus, Search, Trophy, FileSignature, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,15 +15,56 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 
+interface ExamRecord {
+  _id: string;
+  name: string;
+  course: {
+    _id: string;
+    name: string;
+  };
+  date: string;
+  subject: string;
+  totalMarks: number;
+  status: string;
+}
+
 function ExamsContent() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [exams, setExams] = useState<ExamRecord[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Dummy data
-  const dummyExams = [
-    { id: '1', title: 'Mid Term Examination 2026', class: 'Class 6 & 7', date: '15 Sep 2026', status: 'upcoming' },
-    { id: '2', title: 'Monthly Unit Test - August', class: 'All Classes', date: '25 Aug 2026', status: 'completed' },
-    { id: '3', title: 'Weekly Assessment', class: 'Spoken English', date: '12 Aug 2026', status: 'ongoing' },
-  ];
+  useEffect(() => {
+    const fetchExams = async () => {
+      setIsLoading(true);
+      try {
+        const res = await fetch('/api/education/exams');
+        if (res.ok) {
+          const data = await res.json();
+          // compute status based on date
+          const enriched = data.map((e: any) => {
+            const examDate = new Date(e.date);
+            const now = new Date();
+            let status = 'upcoming';
+            if (examDate < now) status = 'completed';
+            // simple dummy ongoing
+            if (examDate.toDateString() === now.toDateString()) status = 'ongoing';
+            return { ...e, status };
+          });
+          setExams(enriched);
+        }
+      } catch (error) {
+        toast.error('Failed to load exams');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchExams();
+  }, []);
+
+  const filteredExams = exams.filter(e => 
+    e.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    e.subject.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="flex flex-col gap-6 px-0 py-4 md:p-8 animate-in fade-in duration-500">
@@ -47,7 +88,7 @@ function ExamsContent() {
         <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 flex items-center justify-between">
           <div>
             <p className="text-sm font-bold text-indigo-600/70 uppercase tracking-widest">Total Exams</p>
-            <h2 className="text-3xl font-black text-indigo-600 mt-1">24</h2>
+            <h2 className="text-3xl font-black text-indigo-600 mt-1">{exams.length}</h2>
           </div>
           <div className="h-12 w-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center">
             <FileSignature className="h-6 w-6" />
@@ -83,42 +124,55 @@ function ExamsContent() {
         />
       </div>
 
-      <div className="rounded-2xl border shadow-sm overflow-hidden bg-white">
+      <div className="rounded-2xl border shadow-sm overflow-hidden bg-white relative min-h-[300px]">
+        {isLoading && (
+          <div className="absolute inset-0 bg-white/50 flex items-center justify-center z-10">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        )}
         <Table>
           <TableHeader className="bg-muted/50">
             <TableRow>
               <TableHead className="font-bold">Exam Title</TableHead>
-              <TableHead className="font-bold">Target Class</TableHead>
+              <TableHead className="font-bold">Subject</TableHead>
               <TableHead className="font-bold">Date</TableHead>
               <TableHead className="font-bold">Status</TableHead>
               <TableHead className="text-right font-bold">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {dummyExams.map((exam) => (
-              <TableRow key={exam.id} className="hover:bg-muted/30">
-                <TableCell className="font-bold text-slate-700">{exam.title}</TableCell>
-                <TableCell className="text-slate-600">{exam.class}</TableCell>
-                <TableCell className="text-slate-500">{exam.date}</TableCell>
-                <TableCell>
-                  <Badge 
-                    variant="outline"
-                    className={`capitalize px-3 py-0.5 rounded-full font-bold text-[10px] tracking-wider 
-                      ${exam.status === 'completed' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : ''}
-                      ${exam.status === 'upcoming' ? 'bg-amber-100 text-amber-700 border-amber-200' : ''}
-                      ${exam.status === 'ongoing' ? 'bg-blue-100 text-blue-700 border-blue-200' : ''}
-                    `}
-                  >
-                    {exam.status}
-                  </Badge>
-                </TableCell>
-                <TableCell className="text-right">
-                   <Button variant="outline" size="sm" className="hover:bg-slate-50">
-                      Manage Marks
-                   </Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {filteredExams.length === 0 && !isLoading ? (
+               <TableRow>
+                 <TableCell colSpan={5} className="text-center py-12 text-muted-foreground">
+                   No exams found.
+                 </TableCell>
+               </TableRow>
+            ) : (
+              filteredExams.map((exam) => (
+                <TableRow key={exam._id} className="hover:bg-muted/30">
+                  <TableCell className="font-bold text-slate-700">{exam.name}</TableCell>
+                  <TableCell className="text-slate-600">{exam.subject}</TableCell>
+                  <TableCell className="text-slate-500">{new Date(exam.date).toLocaleDateString()}</TableCell>
+                  <TableCell>
+                    <Badge 
+                      variant="outline"
+                      className={`capitalize px-3 py-0.5 rounded-full font-bold text-[10px] tracking-wider 
+                        ${exam.status === 'completed' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : ''}
+                        ${exam.status === 'upcoming' ? 'bg-amber-100 text-amber-700 border-amber-200' : ''}
+                        ${exam.status === 'ongoing' ? 'bg-blue-100 text-blue-700 border-blue-200' : ''}
+                      `}
+                    >
+                      {exam.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right">
+                     <Button variant="outline" size="sm" className="hover:bg-slate-50" onClick={() => toast.info('Manage Marks not fully implemented')}>
+                        Manage Marks
+                     </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
           </TableBody>
         </Table>
       </div>

@@ -51,9 +51,10 @@ import Swal from 'sweetalert2';
 
 const navItems = [
   { href: '/', label: 'Home' },
+  { href: '/education', label: 'Education' },
+  { href: '/courses', label: 'Courses' },
+  { href: '/notices', label: 'Notices' },
   { href: '/shop', label: 'Shop' },
-  { href: '/blog', label: 'Blogs' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -340,7 +341,7 @@ export default function Navbar() {
                             {index === 0 && (
                               <Accordion type="single" collapsible>
                                 <AccordionItem value="cats" className="border-none">
-                                  <AccordionTrigger className="py-2 hover:no-underline uppercase text-[12px] font-bold tracking-[0.2em] text-left">Categories</AccordionTrigger>
+                                  <AccordionTrigger className="py-2 hover:no-underline uppercase text-[12px] font-bold tracking-[0.2em] text-left hidden">Categories</AccordionTrigger>
                                   <AccordionContent className="pt-2 pl-4 flex flex-col gap-3">
                                     {mainCategories.map(cat => (
                                       <Link
@@ -561,7 +562,7 @@ export default function Navbar() {
                   {/* Insert CategoryNav after Home (index 0) */}
                   {index === 0 && (
                     <li className="flex items-center h-full">
-                      <CategoryNav />
+                      {/* CategoryNav Removed */}
                     </li>
                   )}
                 </React.Fragment>

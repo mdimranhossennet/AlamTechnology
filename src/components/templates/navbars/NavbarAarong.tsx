@@ -48,9 +48,10 @@ import Swal from 'sweetalert2';
 
 const navItems = [
   { href: '/', label: 'Home' },
+  { href: '/education', label: 'Education' },
+  { href: '/courses', label: 'Courses' },
+  { href: '/notices', label: 'Notices' },
   { href: '/shop', label: 'Shop' },
-  { href: '/blog', label: 'Blogs' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export default function NavbarAarong() {
@@ -338,7 +339,7 @@ export default function NavbarAarong() {
 
                     {/* Categories Accordion */}
                     <div className="space-y-2">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4">Categories</h4>
+                      <h4 className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4 hidden">Categories</h4>
                       <Accordion type="single" collapsible className="w-full">
                         {mainCategories.map((cat) => {
                           const subs = getSubcategories(cat._id);

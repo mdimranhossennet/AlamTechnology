@@ -4,8 +4,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+
 } from "@/components/ui/carousel";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Quote, Star } from "lucide-react";
@@ -15,38 +14,38 @@ import { useSettings } from "@/components/SettingsProvider";
 const fallbackReviews = [
   {
     name: "Ariful Islam",
-    role: "Verified Buyer",
-    content: "The quality of the products is amazing. I was skeptical about ordering online, but this shop proved me wrong. Delivery was super fast too!",
-    image: "https://i.pravatar.cc/80?u=1",
+    role: "Parent of Class 8 Student",
+    content: "The teaching quality and moral environment here is outstanding. I have seen a remarkable improvement in my son's academic performance and discipline.",
+    image: "https://avatar.iran.liara.run/public/boy?username=Ariful",
     rating: 5
   },
   {
     name: "Sadia Afrin",
-    role: "Regular Customer",
-    content: "Excellent customer service! They helped me choose the right size for my dress. The checkout process was smooth as silk. Highly recommended.",
-    image: "https://i.pravatar.cc/80?u=2",
+    role: "Parent of Hifz Student",
+    content: "Excellent teachers and a very caring administration. They focus not only on studies but also on Islamic values. Highly recommended for any parent.",
+    image: "https://avatar.iran.liara.run/public/girl?username=Sadia",
     rating: 5
   },
   {
     name: "Tanvir Ahmed",
-    role: "Tech Enthusiast",
-    content: "Bought my new headphones from here. Genuine product with warranty. The packaging was very secure. Keep up the good work!",
-    image: "https://i.pravatar.cc/80?u=3",
+    role: "Guardian",
+    content: "The residential facilities are secure and well-managed. The daily updates from the school help us stay connected with our child's progress.",
+    image: "https://avatar.iran.liara.run/public/boy?username=Tanvir",
     rating: 5
   },
   {
     name: "Nusrat Jahan",
-    role: "Verified Buyer",
-    content: "I love the variety of products they have. It's my one-stop shop for everything I need. The prices are very competitive compared to other local shops.",
-    image: "https://i.pravatar.cc/80?u=4",
+    role: "Parent of Class 5 Student",
+    content: "We are very satisfied with the modern syllabus combined with religious education. It's the perfect balance for my daughter's future.",
+    image: "https://avatar.iran.liara.run/public/girl?username=Nusrat",
     rating: 5
   }
 ];
 
 export function Testimonials() {
   const settings = useSettings();
-  const reviews = settings?.testimonials && settings.testimonials.length > 0 
-    ? settings.testimonials 
+  const reviews = settings?.testimonials && settings.testimonials.length > 0
+    ? settings.testimonials
     : fallbackReviews;
 
   return (
@@ -55,16 +54,16 @@ export function Testimonials() {
         <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4 text-center md:text-left max-w-xl">
             <h2 className="text-2xl md:text-4xl font-black tracking-tighter">
-              What our <span className="text-primary italic">Customers</span> say
+              What our <span className="text-primary italic">Parents</span> say
             </h2>
             <p className="text-muted-foreground font-medium">
-              Don't just take our word for it. Join thousands of happy customers all over Bangladesh!
+              Don&apos;t just take our word for it. Join hundreds of happy parents who trust us with their children&apos;s future!
             </p>
           </div>
           <div className="flex items-center gap-2 pb-2">
             <div className="flex -space-x-3">
               {reviews.slice(0, 3).map((r, i) => (
-                <Avatar key={i} className="border-2 border-white size-10">
+                <Avatar key={i} className="border-2 border-white size-10 bg-slate-100">
                   <AvatarImage src={r.image} alt={`${r.name} avatar`} />
                   <AvatarFallback>{r.name[0]}</AvatarFallback>
                 </Avatar>
@@ -101,10 +100,10 @@ export function Testimonials() {
                     ))}
                   </div>
                   <p className="text-lg leading-relaxed mb-8 flex-1 italic text-muted-foreground font-medium">
-                    "{review.content}"
+                    &quot;{review.content}&quot;
                   </p>
                   <div className="flex items-center gap-4">
-                    <Avatar className="size-12 rounded-full border-2 border-primary/20 shadow-lg shadow-primary/10">
+                    <Avatar className="size-12 rounded-full border-2 border-primary/20 shadow-lg shadow-primary/10 bg-slate-100">
                       <AvatarImage src={review.image} alt={review.name} />
                       <AvatarFallback>{review.name[0]}</AvatarFallback>
                     </Avatar>
@@ -122,4 +121,3 @@ export function Testimonials() {
     </section>
   );
 }
-
