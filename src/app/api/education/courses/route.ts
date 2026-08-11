@@ -1,29 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db';
-import Student from '@/models/Student';
+import Course from '@/models/Course';
 import { auth } from '@/auth';
-import '@/models/Batch';
 
-// GET all students
 export async function GET(req: NextRequest) {
   try {
     const session = await auth();
-    // Allow admin roles
     if (!session || !session.user || !['admin', 'super_admin', 'manager'].includes((session.user as any)?.role)) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
     await connectToDatabase();
-    const students = await Student.find().populate('batch').sort({ createdAt: -1 });
+    const courses = await Course.find().sort({ createdAt: -1 });
 
-    return NextResponse.json(students);
+    return NextResponse.json(courses);
   } catch (error) {
-    console.error('Error fetching students:', error);
+    console.error('Error fetching courses:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
 
-// POST create a new student
 export async function POST(req: NextRequest) {
   try {
     const session = await auth();
@@ -34,16 +30,10 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     await connectToDatabase();
 
-    // Check if student ID already exists
-    const existingStudent = await Student.findOne({ studentId: body.studentId });
-    if (existingStudent) {
-      return NextResponse.json({ message: 'Student ID already exists' }, { status: 400 });
-    }
-
-    const newStudent = await Student.create(body);
-    return NextResponse.json(newStudent, { status: 201 });
+    const newCourse = await Course.create(body);
+    return NextResponse.json(newCourse, { status: 201 });
   } catch (error) {
-    console.error('Error creating student:', error);
+    console.error('Error creating course:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }

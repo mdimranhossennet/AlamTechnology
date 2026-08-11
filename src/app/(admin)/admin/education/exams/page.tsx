@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
+import { CreateExamModal } from './CreateExamModal';
 
 interface ExamRecord {
   _id: string;
@@ -32,33 +33,55 @@ function ExamsContent() {
   const [searchTerm, setSearchTerm] = useState('');
   const [exams, setExams] = useState<ExamRecord[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+
+  const fetchExamsData = async () => {
+    try {
+      const res = await fetch('/api/education/exams');
+      if (res.ok) {
+        const data = await res.json();
+        // compute status based on date
+        return data.map((e: any) => {
+          const examDate = new Date(e.date);
+          const today = new Date();
+          let status = 'upcoming';
+          if (examDate < today) status = 'completed';
+          if (examDate.toDateString() === today.toDateString()) status = 'ongoing';
+          return { ...e, status };
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    return null;
+  };
+
+  const refreshExams = async () => {
+    setIsLoading(true);
+    const data = await fetchExamsData();
+    if (data) {
+      setExams(data);
+    }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const fetchExams = async () => {
-      setIsLoading(true);
-      try {
-        const res = await fetch('/api/education/exams');
-        if (res.ok) {
-          const data = await res.json();
-          // compute status based on date
-          const enriched = data.map((e: any) => {
-            const examDate = new Date(e.date);
-            const now = new Date();
-            let status = 'upcoming';
-            if (examDate < now) status = 'completed';
-            // simple dummy ongoing
-            if (examDate.toDateString() === now.toDateString()) status = 'ongoing';
-            return { ...e, status };
-          });
-          setExams(enriched);
+    let mounted = true;
+    const loadExams = async () => {
+      const data = await fetchExamsData();
+      if (mounted) {
+        if (data) {
+          setExams(data);
         }
-      } catch (error) {
-        toast.error('Failed to load exams');
-      } finally {
         setIsLoading(false);
       }
     };
-    fetchExams();
+    
+    loadExams();
+    
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const filteredExams = exams.filter(e => 
@@ -75,7 +98,7 @@ function ExamsContent() {
         </div>
         <div className="flex items-center gap-3">
           <Button 
-            onClick={() => toast.info("Create Exam Modal goes here")}
+            onClick={() => setIsCreateModalOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full px-6 h-11 shadow-lg shadow-blue-200 border-none transition-all hover:scale-105 active:scale-95"
           >
             <Plus className="mr-2 h-4 w-4" />
@@ -176,6 +199,12 @@ function ExamsContent() {
           </TableBody>
         </Table>
       </div>
+
+      <CreateExamModal 
+        isOpen={isCreateModalOpen} 
+        onClose={() => setIsCreateModalOpen(false)} 
+        onSuccess={refreshExams} 
+      />
     </div>
   );
 }

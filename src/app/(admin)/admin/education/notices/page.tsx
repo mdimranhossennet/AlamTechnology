@@ -5,9 +5,11 @@ import { Loader2, Plus, Search, Bell, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+import { CreateNoticeModal } from './CreateNoticeModal';
 
 function NoticesContent() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   // Dummy data
   const dummyNotices = [
@@ -25,7 +27,7 @@ function NoticesContent() {
         </div>
         <div className="flex items-center gap-3">
           <Button 
-            onClick={() => toast.info("Create Notice Modal goes here")}
+            onClick={() => setIsCreateModalOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full px-6 h-11 shadow-lg shadow-blue-200 border-none transition-all hover:scale-105 active:scale-95"
           >
             <Plus className="mr-2 h-4 w-4" />
@@ -68,6 +70,14 @@ function NoticesContent() {
           </div>
         ))}
       </div>
+
+      <CreateNoticeModal 
+        isOpen={isCreateModalOpen} 
+        onClose={() => setIsCreateModalOpen(false)} 
+        onSuccess={() => {
+          // Optional: trigger a refetch of notices here
+        }}
+      />
     </div>
   );
 }

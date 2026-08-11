@@ -4,8 +4,11 @@ import { Suspense } from 'react';
 import { Loader2, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { useState } from 'react';
+import { CreateCourseModal } from './CreateCourseModal';
 
 function ClassesContent() {
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   return (
     <div className="flex flex-col gap-6 px-0 py-4 md:p-8 animate-in fade-in duration-500">
       <div className="flex items-center justify-between">
@@ -15,7 +18,7 @@ function ClassesContent() {
         </div>
         <div className="flex items-center gap-3">
           <Button 
-            onClick={() => toast.info("Create Course feature coming soon!")}
+            onClick={() => setIsCreateModalOpen(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full px-6 h-11 shadow-lg shadow-blue-200 border-none transition-all hover:scale-105 active:scale-95"
           >
             <Plus className="mr-2 h-4 w-4" />
@@ -40,12 +43,13 @@ function ClassesContent() {
           </div>
         </div>
 
-        <div className="p-6 rounded-3xl border border-dashed border-slate-300 bg-slate-50 flex flex-col items-center justify-center gap-2 text-center text-muted-foreground hover:bg-slate-100 transition-colors cursor-pointer" onClick={() => toast.info("Add new coming soon")}>
+        <div className="p-6 rounded-3xl border border-dashed border-slate-300 bg-slate-50 flex flex-col items-center justify-center gap-2 text-center text-muted-foreground hover:bg-slate-100 transition-colors cursor-pointer" onClick={() => setIsCreateModalOpen(true)}>
           <Plus className="h-8 w-8 mb-2 opacity-50" />
           <p className="font-bold">Add New Course</p>
           <p className="text-xs">Configure subjects, fees and duration.</p>
         </div>
       </div>
+      <CreateCourseModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} onSuccess={() => {}} />
     </div>
   );
 }
